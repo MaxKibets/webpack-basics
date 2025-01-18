@@ -31,6 +31,14 @@ module.exports = {
         test: /\.txt$/, // file types to be handled
         type: "asset/source", // file content will be inlined
       },
+      // rule for handling css files
+      {
+        test: /\.css$/,
+        use: [
+          "style-loader", // injects css into the DOM
+          "css-loader", // reads css files and returns css code
+        ],
+      },
     ],
   },
 };

@@ -1,0 +1,12 @@
+.button {
+  font-size: 20px;
+  padding: 10px 20px;
+  background-color: green;
+  color: white;
+  outline: none;
+}
+
+.text {
+  font-size: 20px;
+  color: red;
+}
