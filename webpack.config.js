@@ -39,6 +39,16 @@ module.exports = {
           "css-loader", // reads css files and returns css code
         ],
       },
+      // rule for handling scss files
+      {
+        test: /\.scss$/,
+        // order of loaders is from right to left is important! first scss loader covert scss to css, then css loader reads css and returns css code, then style loader injects css into the DOM
+        use: [
+          "style-loader", // injects css into the DOM
+          "css-loader", // reads css files and returns css code
+          "scss-loader", // compiles scss to css
+        ],
+      },
     ],
   },
 };
