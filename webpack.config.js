@@ -11,10 +11,12 @@ module.exports = {
   },
   mode: "none", // mode of bundling
   module: {
+    // rules for handling different file types
     rules: [
+      // rule for handling images
       {
         test: /\.(png|jpg)$/, // file types to be handled
-        // type: "asset/resource", // type of handling
+        // type: "asset/resource", // image will be copied to the output directory
         // type: "asset/inline", // image will be inlined as base64
         // webpack will automatically choose between inline (less 8kB) and resource (more 8kB)
         type: "asset",
@@ -23,6 +25,11 @@ module.exports = {
             maxSize: 3 * 1024, // 3kB (8kB by default)
           },
         },
+      },
+      // rule for handling text files
+      {
+        test: /\.txt$/, // file types to be handled
+        type: "asset/source", // file content will be inlined
       },
     ],
   },
