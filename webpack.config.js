@@ -48,7 +48,7 @@ module.exports = {
         use: [
           MiniCssExtractPlugin.loader, // injects css into the DOM
           "css-loader", // reads css files and returns css code
-          "scss-loader", // compiles scss to css
+          "sass-loader", // compiles scss to css
         ],
       },
     ],

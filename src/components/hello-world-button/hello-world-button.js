@@ -1,30 +1,22 @@
-import "./hello-world-button.css";
+import "./hello-world-button.scss";
 
 class HelloWorldButton {
-  buttonCssClass = "button";
-  paragraphCssClass = "text";
-
-  init() {
-    this.render();
-    this.initHandler();
-  }
+  buttonClassName = "button";
+  paragraphClassName = "text";
 
   render() {
     this.button = document.createElement("button");
     this.button.innerHTML = "Hello World";
-    this.button.classList.add(this.buttonCssClass);
+    this.button.classList.add(this.buttonClassName);
+    this.button.onclick = () => this.renderParagraph();
     this.body = document.querySelector("body");
     this.body.appendChild(this.button);
-  }
-
-  initHandler() {
-    this.button.onclick = () => this.renderParagraph();
   }
 
   renderParagraph() {
     const p = document.createElement("p");
     p.innerHTML = "Hello World";
-    p.classList.add(this.paragraphCssClass);
+    p.classList.add(this.paragraphClassName);
     this.body.appendChild(p);
   }
 }
