@@ -1,4 +1,6 @@
 const path = require("path");
+const TersetPlugin = require("terser-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: "./src/index.js", // entry point to start bundling
@@ -35,7 +37,7 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          "style-loader", // injects css into the DOM
+          MiniCssExtractPlugin.loader, // injects css into the DOM
           "css-loader", // reads css files and returns css code
         ],
       },
@@ -44,11 +46,18 @@ module.exports = {
         test: /\.scss$/,
         // order of loaders is from right to left is important! first scss loader covert scss to css, then css loader reads css and returns css code, then style loader injects css into the DOM
         use: [
-          "style-loader", // injects css into the DOM
+          MiniCssExtractPlugin.loader, // injects css into the DOM
           "css-loader", // reads css files and returns css code
           "scss-loader", // compiles scss to css
         ],
       },
     ],
   },
+  // plugins for additional functionality
+  plugins: [
+    new TersetPlugin(), // minify js code
+    new MiniCssExtractPlugin({
+      filename: "styles.css", // output css file name
+    }), // extract css code to separate file
+  ],
 };
