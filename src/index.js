@@ -8,3 +8,9 @@ const button = new HelloWorldButton();
 heading.render();
 button.render();
 addImage();
+
+if (process.env.NODE_ENV === "production") {
+  console.log("Production mode");
+} else {
+  console.log("Development mode");
+}
