@@ -1,3 +1,3 @@
-main brunch: contains webpack basics
+**main brunch**: contains webpack basics
 
-single-page-app: brunch contains SPA webpack configurations
+**single-page-app**: brunch contains SPA webpack configurations
