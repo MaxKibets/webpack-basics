@@ -5,9 +5,12 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: "./src/index.js", // entry point to start bundling
+  entry: {
+    "hello-world": "./src/hello-world.js",
+    salad: "./src/salad.js",
+  }, // entry point to start bundling
   output: {
-    filename: "bundle.[contenthash].js", // output file name
+    filename: "[name].[contenthash].js", // output file name
     path: path.resolve(__dirname, "./dist"), // output directory. Should be absolute path!
     // Path to the output directory.
     // It can be usefull for CDN (example: publicPath: "https://cdn.example.com/")
@@ -71,7 +74,7 @@ module.exports = {
     // new TersetPlugin(), // minify js code. In production mode it's enabled by default
     // extract css code to separate file
     new MiniCssExtractPlugin({
-      filename: "styles.[contenthash].css", // output css file name
+      filename: "[name].[contenthash].css", // output css file name
     }),
     // clean dist directory before each build
     // new CleanWebpackPlugin({
@@ -82,10 +85,20 @@ module.exports = {
     // }),
     // template plugin
     new HtmlWebpackPlugin({
-      template: "src/index.hbs", // template file
+      filename: "hello-world.html", // output file name and folder
+      chunks: ["hello-world"], // chunks to be included in the output
+      template: "src/page-template.hbs", // template file
       title: "Hello title",
-      description: "Webpack description setted by HtmlWebpackPlugin",
-      // filename: "pages/main.html", // output file name and folder
-    }), // generates index.html file
+      description: "Hello world description",
+      minify: false, // minify html code
+    }),
+    new HtmlWebpackPlugin({
+      filename: "salad.html",
+      chunks: ["salad"], // chunks to be included in the output
+      template: "src/page-template.hbs",
+      title: "Salad",
+      description: "Mmmm, salad",
+      minify: false, // minify html code
+    }),
   ],
 };

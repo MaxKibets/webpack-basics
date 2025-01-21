@@ -2,9 +2,12 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: "./src/index.js", // entry point to start bundling
+  entry: {
+    "hello-world": "./src/hello-world.js",
+    salad: "./src/salad.js",
+  }, // entry point to start bundling
   output: {
-    filename: "bundle.js", // output file name
+    filename: "[name].js", // output file name
     path: path.resolve(__dirname, "./dist"), // output directory. Should be absolute path!
     // Path to the output directory.
     // It can be usefull for CDN (example: publicPath: "https://cdn.example.com/")
