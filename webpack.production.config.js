@@ -29,6 +29,7 @@ module.exports = {
     // minimize: false, // minify js code
     splitChunks: {
       chunks: "all", // split all chunks
+      minSize: 3000, // min size of the chunk to be splitted into separate file
     },
   },
   module: {
