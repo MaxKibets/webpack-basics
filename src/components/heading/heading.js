@@ -1,13 +1,10 @@
 import "./heading.scss";
 
 class Heading {
-  className = "heading";
-
-  render(headingText) {
+  render() {
     const h1 = document.createElement("h1");
     const body = document.querySelector("body");
-    h1.innerHTML = headingText;
-    h1.classList.add(this.className);
+    h1.innerHTML = "Webpack is awesome";
     body.appendChild(h1);
   }
 }
