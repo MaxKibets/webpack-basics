@@ -3,6 +3,7 @@ const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 // const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { min } = require("lodash");
 
 module.exports = {
   entry: {
@@ -24,6 +25,12 @@ module.exports = {
     // },
   },
   mode: "production", // mode of bundling
+  optimization: {
+    // minimize: false, // minify js code
+    splitChunks: {
+      chunks: "all", // split all chunks
+    },
+  },
   module: {
     // rules for handling different file types
     rules: [
@@ -90,7 +97,7 @@ module.exports = {
       template: "src/page-template.hbs", // template file
       title: "Hello title",
       description: "Hello world description",
-      minify: false, // minify html code
+      // minify: false, // minify html code
     }),
     new HtmlWebpackPlugin({
       filename: "salad.html",
@@ -98,7 +105,7 @@ module.exports = {
       template: "src/page-template.hbs",
       title: "Salad",
       description: "Mmmm, salad",
-      minify: false, // minify html code
+      // minify: false, // minify html code
     }),
   ],
 };

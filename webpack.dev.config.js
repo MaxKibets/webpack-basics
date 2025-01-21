@@ -61,7 +61,7 @@ module.exports = {
   // plugins for additional functionality
   plugins: [
     new HtmlWebpackPlugin({
-      template: "src/index.hbs",
+      template: "src/page-tamplate.hbs",
       title: "Hello title",
       description: "Webpack description setted by HtmlWebpackPlugin",
     }),
