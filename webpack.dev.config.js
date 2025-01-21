@@ -1,16 +1,15 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
   entry: {
     "hello-world": "./src/hello-world.js",
     salad: "./src/salad.js",
-  }, // entry point to start bundling
+  },
   output: {
-    filename: "[name].js", // output file name
-    path: path.resolve(__dirname, "./dist"), // output directory. Should be absolute path!
-    // Path to the output directory.
-    // It can be usefull for CDN (example: publicPath: "https://cdn.example.com/")
+    filename: "[name].bundle.js",
+    path: path.resolve(__dirname, "./dist"),
     publicPath: "",
   },
   mode: "development",
@@ -25,29 +24,24 @@ module.exports = {
     },
   },
   module: {
-    // rules for handling different file types
     rules: [
-      // rule for handling images
       {
         test: /\.(png|jpg)$/,
         type: "asset",
         parser: {
           dataUrlCondition: {
-            maxSize: 3 * 1024, // 3kB (8kB by default)
+            maxSize: 3 * 1024,
           },
         },
       },
-      // rule for handling text files
       {
         test: /\.txt$/,
         type: "asset/source",
       },
-      // rule for handling css files
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
       },
-      // rule for handling scss files
       {
         test: /\.scss$/,
         use: ["style-loader", "css-loader", "sass-loader"],
@@ -58,12 +52,21 @@ module.exports = {
       },
     ],
   },
-  // plugins for additional functionality
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: "src/page-tamplate.hbs",
-      title: "Hello title",
-      description: "Webpack description setted by HtmlWebpackPlugin",
+      filename: "hello-world.html",
+      chunks: ["hello-world"],
+      template: "src/page-template.hbs",
+      title: "DEV | Hello title",
+      description: "Hello world description",
+    }),
+    new HtmlWebpackPlugin({
+      filename: "salad.html",
+      chunks: ["salad"],
+      template: "src/page-template.hbs",
+      title: "DEV | Salad",
+      description: "Mmmm, salad",
     }),
   ],
 };
