@@ -1,9 +1,14 @@
-import React from "react";
-import Heading from "./components/heading/heading";
-import HelloWorldButton from "./components/hello-world-button/hello-world-button";
+import HelloWorldButton from './components/hello-world-button/hello-world-button.js';
+import Heading from './components/heading/heading.js';
+import React from 'react';
 
 const heading = new Heading();
-const button = new HelloWorldButton();
+heading.render();
+const helloWorldButton = new HelloWorldButton();
+helloWorldButton.render();
 
-heading.render("Hello world");
-button.render();
+if (process.env.NODE_ENV === 'production') {
+    console.log('Production mode');
+} else if (process.env.NODE_ENV === 'development') {
+    console.log('Development mode');
+}
