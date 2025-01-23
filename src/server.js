@@ -4,6 +4,8 @@ const fs = require("fs");
 
 const app = express();
 
+app.use("/static", express.static(path.resolve(__dirname, "../dist")));
+
 app.get("/", (req, res) => {
   const filePath = path.resolve(__dirname, "../dist/index.html");
   const content = fs.readFileSync(filePath, "utf-8");
