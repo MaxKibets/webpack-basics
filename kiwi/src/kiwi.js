@@ -1,13 +1,3 @@
-import Heading from "./components/heading/heading.js";
-import KiwiImage from "./components/kiwi-image/kiwi-image.js";
+import KiwiPage from "./components/kiwi-page/kiwi-page";
 
-const heading = new Heading();
-heading.render();
-const kiwiImage = new KiwiImage();
-kiwiImage.render();
-
-import("HelloWorldApp/hello-world-button").then((module) => {
-  const HelloWorldButton = module.default;
-  const helloWorldButton = new HelloWorldButton();
-  helloWorldButton.render();
-});
+KiwiPage.render();

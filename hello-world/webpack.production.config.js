@@ -59,6 +59,8 @@ module.exports = {
       exposes: {
         "./hello-world-button":
           "./src/components/hello-world-button/hello-world-button.js",
+        "./hello-world-page":
+          "./src/components/hello-world-page/hello-world-page.js",
       },
     }),
   ],
