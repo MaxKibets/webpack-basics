@@ -1,0 +1,17 @@
+.bar {
+  background-color: #8edea5;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+
+  li {
+    list-style: none;
+  }
+
+  a {
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+  }
+}

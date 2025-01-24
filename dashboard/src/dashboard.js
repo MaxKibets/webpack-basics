@@ -1,6 +1,19 @@
-const url = window.location.pathname;
+import NavigationBar from "./components/navigation-bar/navigation-bar.js";
+const navItems = [
+  {
+    url: "/hello-world",
+    title: "Hello World",
+  },
+  {
+    url: "/kiwi",
+    title: "Kiwi",
+  },
+];
 
-console.log("dashboard!", url);
+const navirationBar = new NavigationBar();
+navirationBar.render(navItems);
+
+const url = window.location.pathname;
 
 if (url === "/hello-world") {
   import("HelloWorldApp/hello-world-page").then(
